@@ -1,17 +1,15 @@
 <template>
-	<div>
-		登录组件页面
+	<div id="tmpl">
+		购物车
 	</div>
-	
 </template>
-
+	
 <script>
-
 	export default{
-		
+
 	}
 </script>
 
 <style scoped>
-
+	
 </style>
