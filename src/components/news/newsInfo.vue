@@ -14,6 +14,7 @@
 
 <script>
     import { Toast } from 'mint-ui';
+    import common from '../../common/common.js';
 
     export default {
         data(){
@@ -37,7 +38,7 @@
         methods:{
             getInfo(){
                 // 定义 url
-                var url = "../../../data/newsInfo"+this.id+".json";
+                var url = common.apidomain + "/newsInfo"+this.id+".json";
 
                 // 发出 ajax 请求
                 this.$http.get(url).then(function (response) {

@@ -24,7 +24,7 @@
 
 <script>
 	import { Toast } from 'mint-ui';
-
+    import common from '../../common/common.js';
 	export default{
 		data(){
 		    return{
@@ -38,7 +38,7 @@
 		    // 获取api中的新闻资讯数据
 			getNewsList(){
 			    // 确定url
-			    var url = "../../../data/newsList.json";
+			    var url = common.apidomain + "/newsList.json";
 
 			    // 利用 $http 的 get 方式请求到数据
 				this.$http.get(url).then(function (response) {
