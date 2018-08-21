@@ -18,8 +18,9 @@ import '../static/mui/css/mui.css';
 import App from './App.vue';
 
 import home from './components/home.vue';
-import shopcar from './components/shopcar/car.vue';
-import newslist from './components/news/newslist.vue';
+import shopcart from './components/shopcart/cart.vue';
+import newsList from './components/news/newsList.vue';
+import newsInfo from './components/news/newsInfo.vue';
 
 // 导入当前系统的 全局样式
 import '../static/css/site.css';
@@ -27,9 +28,10 @@ import '../static/css/site.css';
 // 定义路由规则
 var router = new VueRouter({
 	routes: [
-		{path: '/home',component: home},
-		{path: '/shopcar',component: shopcar},
-		{path: '/news/newslist',component: newslist}
+		{path: '/home',component: home},	//	首页
+		{path: '/shopcart',component: shopcart},	// 购物车
+		{path: '/news/newslist',component: newsList},	// 新闻资讯列表
+		{path: '/news/newsInfo/:id',component: newsInfo}	// 新闻资讯详情
 	],
 	linkActiveClass : "mui-active"	// 改变路由激活时的class名称
 });

@@ -1,6 +1,14 @@
 <template>
 	<div id="tmpl">
 		购物车
+		购物车
+		购物车
+		购物车
+		购物车
+		购物车
+		购物车
+		购物车
+		购物车
 	</div>
 </template>
 	

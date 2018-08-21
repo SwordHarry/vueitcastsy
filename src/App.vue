@@ -22,7 +22,7 @@
 				</span>
 				<span class="mui-tab-label">会员</span>
 			</router-link>
-			<router-link class="mui-tab-item" to="/shopcar">
+			<router-link class="mui-tab-item" to="/shopcart">
 				<span class="mui-icon mui-icon-email">
 					<span class="mui-badge">0</span>
 				</span>
