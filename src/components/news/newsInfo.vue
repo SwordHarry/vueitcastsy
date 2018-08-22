@@ -8,6 +8,10 @@
             内容
         </div>
 
+
+        <!--实现评论组件-->
+        <!--10.2 使用评论组件-->
+        <comment :id="id"></comment>
     </div>
 
 </template>
@@ -15,6 +19,9 @@
 <script>
     import { Toast } from 'mint-ui';
     import common from '../../common/common.js';
+
+    // 10.0 导入 评论组件
+    import comment from '../subcom/comment.vue';
 
     export default {
         data(){
@@ -50,6 +57,9 @@
                     }
                 });
             }
+        },
+        components: {
+            comment // 10.1 注册评论组件
         }
     }
 </script>
