@@ -24,7 +24,13 @@
                     </li>
                 </ul>
             </div>
+        </div>
 
+        <!--实现获取更多按钮-->
+        <div class="loadMore">
+            <mt-button type="danger" size="large" @click="getMoreComment" plain>
+                加载更多
+            </mt-button>
         </div>
     </div>
 </template>
@@ -37,13 +43,14 @@
         name: "comment",
         data(){
             return {
+                pageIndex: 1,   // 代表 评论 数据的第几页
                 content: '', // 用来自动获取用户填写的评论内容
                 commentsList: []
             };
         },
         props: ['id'],   // 作用是用来接收父组件传入过来的id值
         created(){
-            this.getcomment(1);
+            this.getcomment(this.pageIndex);
         },
         methods: {
             // 评论数据的提交
@@ -67,20 +74,25 @@
             },
             // 获取当前所有的评论的列表，pageIndex 代表那一页数据
             getcomment(pageIndex){
-                /* | */
-                pageIndex = pageIndex | 1;
+                /* || */
+                pageIndex = pageIndex || 1;
                 // var url = common.apidomain + "/newscomment"+this.id+".json?pageIndex="+pageIndex;
-                var url = common.apidomain + "/newscomment"+this.id+".json";
+                var url = common.apidomain + "/newscomment.json";
 
                 // 发出 ajax 请求获取数据
                 this.$http.get(url).then(function (response) {
                     var data = response.body;
                     if(data.status === 0){
-                        this.commentsList = data.message;
+                        this.commentsList = this.commentsList.concat(data.message);
                     }else{
                         Toast("获取评论失败");
                     }
-                })
+                });
+            },
+            // 实现加载更多按钮功能
+            getMoreComment(){
+                this.pageIndex++;
+                this.getcomment(this.pageIndex);
             }
         }
     }
@@ -100,7 +112,13 @@
         font-size: 15px;
         background-color: rgba(0,0,0,0.1);
     }
-    #list {
-        padding: 5px;
+    #postcomment,#getcomment {
+        padding: 8px;
     }
+    .loadMore{
+        display: block;
+        padding: 8px;
+    }
+
+
 </style>
