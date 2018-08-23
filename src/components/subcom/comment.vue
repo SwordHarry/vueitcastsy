@@ -37,11 +37,11 @@
 
 <script>
     import common from '../../common/common.js';
-    import { Toast } from 'mint-ui';
+    import {Toast} from 'mint-ui';
 
     export default {
         name: "comment",
-        data(){
+        data() {
             return {
                 pageIndex: 1,   // 代表 评论 数据的第几页
                 content: '', // 用来自动获取用户填写的评论内容
@@ -49,31 +49,41 @@
             };
         },
         props: ['id'],   // 作用是用来接收父组件传入过来的id值
-        created(){
+        created() {
             this.getcomment(this.pageIndex);
         },
         methods: {
             // 评论数据的提交
-            postcomment(){
-                if(this.content.trim().length > 0){
+            postcomment() {
+                if (this.content.trim().length > 0) {
                     // 确定提交的地址
-                    var url = common.apidomain + "/api/postcomment/"+ this.id ;
-                    Toast("提交评论数据"+this.id);
+                    var url = common.apidomain + "/api/postcomment/" + this.id;
+                    Toast("提交评论数据" + this.id);
                     // 利用 Post 请求提交评论数据
                     // this.$http.post(url,{content: this.content},{emulateJSON: true}).then(function (response) {
                     //     Toast(response.body.message);
                     // });
 
+
+                    // 将最新的评论数据追加到评论列表的最顶部
+                    this.commentsList = [
+                        {
+                            "user_name": "匿名用户",
+                            "add_time": new Date(),
+                            "content": this.content
+                        }
+                    ].concat(this.commentsList);
+
                     // 将文本框中的评论内容清空
                     this.content = "";
 
-                }else{
+                } else {
                     Toast("请输入评论");
                 }
 
             },
             // 获取当前所有的评论的列表，pageIndex 代表那一页数据
-            getcomment(pageIndex){
+            getcomment(pageIndex) {
                 /* || */
                 pageIndex = pageIndex || 1;
                 // var url = common.apidomain + "/newscomment"+this.id+".json?pageIndex="+pageIndex;
@@ -82,15 +92,15 @@
                 // 发出 ajax 请求获取数据
                 this.$http.get(url).then(function (response) {
                     var data = response.body;
-                    if(data.status === 0){
+                    if (data.status === 0) {
                         this.commentsList = this.commentsList.concat(data.message);
-                    }else{
+                    } else {
                         Toast("获取评论失败");
                     }
                 });
             },
             // 实现加载更多按钮功能
-            getMoreComment(){
+            getMoreComment() {
                 this.pageIndex++;
                 this.getcomment(this.pageIndex);
             }
@@ -99,26 +109,28 @@
 </script>
 
 <style scoped>
-/*1.0 实现提交评论样式*/
+    /*1.0 实现提交评论样式*/
     p {
         height: 1px;
         width: 100%;
-        border-bottom: 1px solid rgba(0,0,0,0.3);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.3);
     }
-    .title{
+
+    .title {
         margin: 5px 0px 5px;
         padding: 5px;
         color: #6d6d72;
         font-size: 15px;
-        background-color: rgba(0,0,0,0.1);
+        background-color: rgba(0, 0, 0, 0.1);
     }
-    #postcomment,#getcomment {
-        padding: 8px;
-    }
-    .loadMore{
-        display: block;
+
+    #postcomment, #getcomment {
         padding: 8px;
     }
 
+    .loadMore {
+        display: block;
+        padding: 8px;
+    }
 
 </style>

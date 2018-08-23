@@ -28,6 +28,7 @@ import '../static/css/site.css';
 // 定义路由规则
 var router = new VueRouter({
 	routes: [
+        {path: '/',redirect: '/home'},	//	设置启动默认跳转
 		{path: '/home',component: home},	//	首页
 		{path: '/shopcart',component: shopcart},	// 购物车
 		{path: '/news/newslist',component: newsList},	// 新闻资讯列表

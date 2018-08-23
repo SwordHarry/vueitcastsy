@@ -164,5 +164,8 @@
     .mui-icon-phone:before {
         background-image: url(../../static/imgs/1.png);
     }
+    .mui-table-view .mui-media, .mui-table-view .mui-media-body{
+        overflow: visible;
+    }
 
 </style>
