@@ -21,6 +21,7 @@ import home from './components/home.vue';
 import shopcart from './components/shopcart/cart.vue';
 import newsList from './components/news/newsList.vue';
 import newsInfo from './components/news/newsInfo.vue';
+import imgList from './components/img/imgList.vue';
 
 // 导入当前系统的 全局样式
 import '../static/css/site.css';
@@ -31,8 +32,9 @@ var router = new VueRouter({
         {path: '/',redirect: '/home'},	//	设置启动默认跳转
 		{path: '/home',component: home},	//	首页
 		{path: '/shopcart',component: shopcart},	// 购物车
-		{path: '/news/newslist',component: newsList},	// 新闻资讯列表
-		{path: '/news/newsInfo/:id',component: newsInfo}	// 新闻资讯详情
+		{path: '/news/newsList',component: newsList},	// 新闻资讯列表
+		{path: '/news/newsInfo/:id',component: newsInfo},	// 新闻资讯详情
+        {path: '/photo/photoList',component: imgList}	//	图片分享
 	],
 	linkActiveClass : "mui-active"	// 改变路由激活时的class名称
 });
