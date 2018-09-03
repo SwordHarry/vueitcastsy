@@ -1,4 +1,5 @@
 var htmlwp = require('html-webpack-plugin');
+// 热刷新配置
 
 module.exports={
 	entry: "./src/main.js", // 指定打包的入口文件
@@ -27,8 +28,8 @@ module.exports={
 						test: /\.(png|jpg|gif|ttf)$/,	// 打包 url资源 文件
 						// 先用css-loader解析css文件，变为style文件后再用style-loader解析成指令
 						use:[ 'url-loader?limit=40000' ]	
-					// limit 表示限制图片大小为40k为临界值
-					// 小于40k的图片均被打包到build.js中去
+						// limit 表示限制图片大小为40k为临界值
+						// 小于40k的图片均被打包到build.js中去
 					},
 					{
 						test: /\.js$/,	// 将 js 文件中的es6语法转成es5语法

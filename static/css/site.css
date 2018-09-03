@@ -3,6 +3,18 @@ body {
 }
 #tmpl {
 	margin-top: 45px;
-
 	margin-bottom: 50px;
+}
+
+/* imgInfo.vue 9宫格实现缩略图 */
+.imgContent img {
+	width: 100px;
+	height: 100px;
+	display: inline-block;
+}
+.imgContent figure {
+	margin: 9px;
+	width: 100px;
+	height: 100px;
+	display: inline-block;
 }

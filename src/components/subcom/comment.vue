@@ -17,7 +17,7 @@
                 <div class="title">
                     <span>{{index+1}}楼: </span>
                     <span>{{comment.user_name}}</span>
-                    <span>{{comment.add_time | datefmt("YYYY-MM-DD HH-mm-ss")}}</span>
+                    <span>{{comment.add_time | datefmt("YYYY-MM-DD HH:mm:ss")}}</span>
                 </div>
                 <ul class="mui-table-view">
                     <li class="mui-table-view-cell" v-text="comment.content">

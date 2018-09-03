@@ -12,6 +12,14 @@ import mintui from 'mint-ui';
 import 'mint-ui/lib/style.min.css';
 Vue.use(mintui);
 
+// 注册懒加载组件
+import VueLazyload from 'vue-lazyload';
+Vue.use(VueLazyload);
+
+// 注册 图片预览 组件
+import VuePreview from 'vue-preview';
+Vue.use(VuePreview);
+
 // 注册 mui 的 css 样式
 import '../static/mui/css/mui.css';
 
@@ -22,6 +30,8 @@ import shopcart from './components/shopcart/cart.vue';
 import newsList from './components/news/newsList.vue';
 import newsInfo from './components/news/newsInfo.vue';
 import imgList from './components/img/imgList.vue';
+import imgInfo from './components/img/imgInfo.vue';
+import goodsList from './components/goods/goodsList.vue';
 
 // 导入当前系统的 全局样式
 import '../static/css/site.css';
@@ -34,7 +44,9 @@ var router = new VueRouter({
 		{path: '/shopcart',component: shopcart},	// 购物车
 		{path: '/news/newsList',component: newsList},	// 新闻资讯列表
 		{path: '/news/newsInfo/:id',component: newsInfo},	// 新闻资讯详情
-        {path: '/photo/photoList',component: imgList}	//	图片分享
+        {path: '/img/imgList',component: imgList},	//	图片分享
+        {path: '/img/imgInfo/:id',component: imgInfo},
+		{path: '/goods/goodsList', component: goodsList}
 	],
 	linkActiveClass : "mui-active"	// 改变路由激活时的class名称
 });

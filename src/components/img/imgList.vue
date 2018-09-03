@@ -12,7 +12,9 @@
         <div id="imgList">
             <ul>
                 <li v-for="item in imgList">
-                    <img v-lazy="item.img_url">
+                    <router-link v-bind="{to:'/img/imgInfo/'+item.id}">
+                        <img v-lazy="item.img_url" :key="item.img_url">
+                    </router-link>
                     <div id="description">
                         <h5 v-text="item.title"></h5>
                         <p v-text="item.summary"></p>
@@ -68,6 +70,7 @@
                     var data = response.body;
                     if(data.status === 0){
                         this.imgList = data.message;
+                        console.log(this.imgList);
                     }else{
                         Toast(data.message);
                     }

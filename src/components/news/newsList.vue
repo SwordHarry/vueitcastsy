@@ -71,4 +71,8 @@
 	.news-foot > span:last-child {
 		margin-left: 20px;
 	}
+	.mui-table-view-cell:after{
+		left: 0;
+	}
+
 </style>
